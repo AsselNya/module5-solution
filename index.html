@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Web App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .tile {
+      border: 1px solid #ccc;
+      padding: 50px;
+      margin: 20px;
+      font-size: 24px;
+      background-color: #f8f9fa;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    .tile:hover {
+      background-color: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#" onclick="$dc.loadHome()">Restaurant Logo</a>
+  </nav>
+
+  <div id="main-content" class="container mt-4">
+    <!-- Главная страница будет подгружаться сюда -->
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
