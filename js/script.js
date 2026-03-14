@@ -1,12 +1,9 @@
-// script.js
-
 (function (global) {
   var dc = {};
 
-  // URL для получения категорий и меню
-  dc.url = "https://davids-restaurant.herokuapp.com"; // пример API
+  // URL API
+  dc.url = "https://davids-restaurant.herokuapp.com";
 
-  // Загрузка HTML фрагментов
   var insertHtml = function (selector, html) {
     document.querySelector(selector).innerHTML = html;
   };
@@ -16,34 +13,29 @@
     return string.replace(new RegExp(propToReplace, "g"), propValue);
   };
 
-  // Генерация случайной категории
   dc.randomCategoryShortName = function (categories) {
     var randomIndex = Math.floor(Math.random() * categories.length);
     return categories[randomIndex].short_name;
   };
 
-  // Загрузка главной страницы с заменой {{randomCategoryShortName}}
   dc.loadHome = function () {
-    // Получаем HTML фрагмент главной страницы
     fetch("snippets/home-snippet.html")
       .then((response) => response.text())
       .then((homeHtml) => {
-        // Получаем список категорий
         fetch(dc.url + "/categories.json")
           .then((response) => response.json())
           .then((categories) => {
             var randomShortName = dc.randomCategoryShortName(categories);
-            var homeHtmlFinal = insertProperty(
+            var finalHtml = insertProperty(
               homeHtml,
               "randomCategoryShortName",
               randomShortName
             );
-            insertHtml("#main-content", homeHtmlFinal);
+            insertHtml("#main-content", finalHtml);
           });
       });
   };
 
-  // Загрузка элементов меню по категории
   dc.loadMenuItems = function (categoryShort) {
     fetch(dc.url + "/menu_items.json?category=" + categoryShort)
       .then((response) => response.json())
@@ -58,8 +50,7 @@
       });
   };
 
-  // Событие загрузки страницы
-  document.addEventListener("DOMContentLoaded", function (event) {
+  document.addEventListener("DOMContentLoaded", function () {
     dc.loadHome();
   });
 
