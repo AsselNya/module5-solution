@@ -1,0 +1,25 @@
+<!-- home-snippet.html -->
+<div class="container">
+  <div class="row text-center">
+    <!-- Menu tile -->
+    <div class="col-md-4">
+      <a href="#" onclick="$dc.loadMenuItems('L');">
+        <div class="tile">Menu</div>
+      </a>
+    </div>
+
+    <!-- Specials tile – случайная категория будет подставляться через JS -->
+    <div class="col-md-4">
+      <a href="#" onclick="$dc.loadMenuItems({{randomCategoryShortName}});">
+        <div class="tile">Specials</div>
+      </a>
+    </div>
+
+    <!-- Map tile -->
+    <div class="col-md-4">
+      <a href="#" href="map.html">
+        <div class="tile">Map</div>
+      </a>
+    </div>
+  </div>
+</div>
